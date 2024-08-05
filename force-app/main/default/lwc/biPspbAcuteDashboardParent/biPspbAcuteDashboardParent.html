@@ -1,0 +1,46 @@
+<!--This Lwc  is used to display Widgets,Notification pannel,Welcome Avatar,Article for acute patient Dashboard Page-->
+<template>
+	<!-- Show the loading after react/unreact for few seconds -->
+	<div class="spinner-wrapper" if:true={showSpinner}>
+		<div class="loader"></div>
+	</div>
+	<div data-it-logged-in="true" data-it-uid={userid}>
+		<lightning-layout multiple-rows class="align">
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="7" large-device-size="7"
+				class="slds-p-top_x-large slds-p-bottom_x-large width">
+				<div class="grid-containerNotification">
+					<!--Display the Welcome Avatar-->
+					<div class="avatar">
+						<c-bi-Pspb-Welcome-Avatar></c-bi-Pspb-Welcome-Avatar>
+					</div>
+					<!--Display the Notification Panel-->
+					<div class="board">
+						<c-bi-Pspb-Dashboard-Notification></c-bi-Pspb-Dashboard-Notification>
+					</div>
+				</div>
+			</lightning-layout-item>
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="5" large-device-size="5"
+				class="slds-p-top_x-large widget slds-p-bottom_x-large">
+				<div class="grid-containerWidget">
+					<div>
+					</div>
+					<!--Display the Challenge widget-->
+					<div class="widgetch">
+						<c-bi-Pspb-Widget-Challenges></c-bi-Pspb-Widget-Challenges>
+					</div>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+
+		<lightning-layout multiple-rows class="align">
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+				class="slds-p-bottom_x-large">
+				<!--Display the Article-->
+				<div class="custom-box">
+					<c-bi-Pspb-Articles-For-Dashboard></c-bi-Pspb-Articles-For-Dashboard>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</div>
+</template>

@@ -1,0 +1,113 @@
+@font-face {
+	font-family: "Eina-Regular",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+	src: url('/s/sfsites/c/resource/WebEinaFonts/WebFonts/Eina01-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: "Eina-Light",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+	src: url('/s/sfsites/c/resource/WebEinaFonts/WebFonts/Eina04-Light.woff') format('woff');
+}
+
+@font-face {
+	font-family: "Eina-SemiBold",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+	src: url('/s/sfsites/c/resource/WebEinaFonts/WebFonts/Eina04-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family:   "Eina-Bold",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+	src: url('/s/sfsites/c/resource/WebEinaFonts/WebFonts/Eina04-Bold.woff') format('woff');
+}
+/* Styles */
+
+.wholediv{
+    background-color: #fbfaf5;
+    padding-left: 6%;
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+.Mainheading{
+font-family:   "Eina-Bold",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+font-size: 32px;
+font-weight: 400;
+line-height: 40px;
+text-align: left;
+color:#403A60;
+}
+.errorcontent{
+font-family: "Eina-SemiBold",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 29px;
+text-align: left;
+color:#DF645B;
+}
+ul {
+    list-style-type: disc; 
+    color: #666;
+    font-size: 18px;
+    margin-left: 20px; 
+}
+.sorrycontent{
+font-family: "Eina-Regular",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 29px;
+text-align: left;
+color:#546372;
+}
+.wholeerror{
+    display: flex;
+    grid-template-rows: auto;
+    gap: 10px;
+}
+.listheading{
+font-family: "Eina-SemiBold",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+font-size: 16px;
+font-weight: 400;
+line-height: 29px;
+text-align: left;
+color:#546372;
+}
+.listcontent{
+    font-family: "Eina-Regular",  Helvetica, Arial, Verdana, Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+    text-align: left;
+    color:#546372;
+}
+/* Responses */
+
+@media screen and (max-width: 400px) {
+	.wholediv {
+		width: 100%;
+	}
+    .Mainheading{
+        font-size: 23px;
+    }
+
+}
+@media screen and (min-width:401px) and (max-width: 600px) {
+	.wholediv {
+		width: 100%;
+	}
+    .Mainheading{
+        font-size: 25px;
+    }
+
+}
+@media screen and (min-width:601px) and (max-width: 768px) {
+	.wholediv {
+		width: 100%;
+	}
+}
+@media screen and (min-width:768px) and (max-width: 992px) {
+	.wholediv {
+		width: 100%;
+	}
+}
+@media screen and (min-width:992px) and (max-width: 1200px) {
+	.wholediv {
+		width: 100%;
+	}
+}

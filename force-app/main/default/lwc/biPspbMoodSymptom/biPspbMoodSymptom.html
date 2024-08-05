@@ -1,0 +1,50 @@
+<!-- This components using user reaction save values store this lwc -->
+    <template>
+        <div class="emoji-para" data-it-uid={userId}>
+            <div class="emoji-container">
+                <span class="custom-tooltip" data-tooltip="I am sad">
+                    <img src={imgUrlWorried} alt="Tintable Image" class={emoji} onclick={handleEmojiClick}
+                        data-name="Unhappy"></img></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                <span class="custom-tooltip" data-tooltip="I am worried">
+                    <img src={imgUrlSad} alt="Tintable Image" class={emoji} onclick={handleEmojiClick}
+                        data-name="sad"></img></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                <span class="custom-tooltip" data-tooltip="I am speechless">
+                    <img src={imgUrlSpeechless} alt="Tintable Image" class={emoji} onclick={handleEmojiClick}
+                        data-name="speechless"></img></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                <span class="custom-tooltip" data-tooltip="I am joyfull">
+                    <img src={imgUrlJoyfull} alt="Tintable Image" class={emoji} onclick={handleEmojiClick}
+                        data-name="Happy"></img></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                <span class="custom-tooltip" data-tooltip="I am happy">
+                    <img src={imgUrlHappy} alt="Tintable Image" class={emoji} onclick={handleEmojiClick}
+                        data-name="extremely happy"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+            </div>
+            <br>
+            <br>
+            <div class="itchiness"> {moodInfo} </div>
+        </div>
+        <div class="modal-btn-row">
+            <button class="modal-confirm-btn" type="button" onclick={onchangeAccept}  if:true={fatiqueErrors}
+                data-it-button="Mood: Confirm and Save">{confirmAndSave}</button>
+        </div>
+        <template if:true={currentMoodErrorSad}>
+            <div class="modal-message">
+                <p class="p">
+                    <img src={boxedIcon}>
+                    If you are experiencing extreme or prolonged periods of sadness, please <br>seek out support from a
+                    mental health professional.
+                </p>
+            </div>
+            <div class="modal-message1">
+                <p class="p">
+                    <img src={boxedIcon}>
+                    If you are experiencing extreme or prolonged periods of sadness, please seek out support from a mental
+                    health professional.
+                </p>
+            </div>
+        </template>
+    </template>

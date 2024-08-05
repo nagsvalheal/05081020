@@ -1,0 +1,575 @@
+<!--This component used to  navigate  for all the pages.-->
+<template>
+  <!-- Top Header -->
+  <!-- Strings are hard coded in this HTML file to comply with the mobile responsiveness-->
+  <div class="slds-no-print">
+	<lightning-layout multiple-rows class="topHeader padding">
+		<lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12">
+		<div class="grid-containerNavPatient">
+			<div class="display-text">
+			<p class="textp">{beyondGpp}</p>
+			</div>
+			<div class="custom-box">
+			<template if:true={showNavDetails}>
+				<div class="grid-containerLogout">
+				<div style="display: flex">
+					<a onclick={openCarNotSettingsOne}>
+					<img src={NIcon} onclick={openCarNotSettingsOne} width="17px" /></a>
+				</div>
+				<div class="usernameMenu">
+					<a class="userName">{userName}
+					<span><img src={downHeadIcon} width="20px" /></span></a>
+					<div class="userName-SubMenu">
+					<div class="grid-containerMenuProfile">
+						<!-- User menus -->
+						<div>
+						<p class="headMenu" onclick={userNavigation}>
+							{accountManager}
+						</p>
+						</div>
+						<div>
+						<p class="headMenu" onclick={openCarNotSettingsOne}>
+							{notificationCenter}
+						</p>
+						</div>
+						<div>
+						<p class="headMenu" onclick={openUpdatePrescription}>
+							{updatePrescription}
+						</p>
+						</div>
+
+						<template if:true={showCareGiverMenus}>
+						<div class="grid-containerMenuProfile">
+							<div>
+							<!-- Caregiver switch patient -->
+							<p class="headMenu">{switchPatients}</p>
+							</div>
+
+							<template for:each={activeData} for:item="active" for:index="index">
+							<div key={active.Id}>
+								<c-bi-Pspb-Patient-Selection-Switch caregiverid={active.CaregiveID}
+								patientname={active.Name} patientid={active.Id}>
+								</c-bi-Pspb-Patient-Selection-Switch>
+							</div>
+							</template>
+						</div>
+						</template>
+					</div>
+					</div>
+				</div>
+				<div><a onclick={logoutFunc} class="logoutFunc">{logOut}</a></div>
+				</div>
+			</template>
+			</div>
+		</div>
+		</lightning-layout-item>
+	</lightning-layout>
+		<div class="gradientcolorNavbar"></div>
+	<!-- Naviagtion Bar-->
+	<lightning-layout multiple-rows class="navBar padding">
+		<lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12">
+		<div class="display-LogoLogin">
+			<div class="grid-containerNav">
+			<div class="logo">
+				<a onclick={openHome}><img src={navlogo} width="132px" height="56px" /></a>
+			</div>
+			<div class="login">
+				<div class="displaylogincontent">
+				<template if:true={showMenu}>
+					<div class="grid-containerMenu">
+					<!-- Navigation Menus -->
+					<div style="display: block">
+						<a class="menu" onclick={openHome}>{home}</a><template if:true={showHomeLine}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openInformationCenter}>{informationCenter}</a><template
+						if:true={showInformationCenter}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openSymptomTracker}>{symptomTracker}</a><template
+						if:true={showSymptomTracker}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openChallenges}>{challengesLabel}</a><template if:true={showChallenge}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openQuestions}>{myQuestionnaire}</a><template if:true={showQuestionnaires}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openCommunity}>{community}</a><template if:true={showCommunity}>
+						<hr />
+						</template>
+					</div>
+					<div style="display: block">
+						<a class="menu" onclick={openSupport}>{support}</a><template if:true={showSupport}>
+						<hr />
+						</template>
+					</div>
+					</div>
+				</template>
+				<template if:true={showToLogin}>
+					<div>
+					<button class="button-Div" onclick={checkUser}>{loginLabel}</button>
+					</div>
+				</template>
+				</div>
+			</div>
+			<div class="loginMobile">
+				<div class="grid-containerMenuMobile">
+				<!-- Notification icons -->
+				<div class="bell">
+					<a onclick={openCarNotSettingsOne}><img src={NIconCol} width="24px" /></a>
+				</div>
+				<div class="menuutop">
+					<a onclick={openMobMenu}><img src={MenuIcon} width="24px" /></a>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		</lightning-layout-item>
+	</lightning-layout>
+
+	<!-- All Navigation Menu in Mobile -->
+	<template if:true={isMenuOpen}>
+		<div class="menu-overlay">
+		<div class="menuMob">
+			<div class="display-MobileLogoLogin padding">
+			<div class="grid-containerNav">
+				<div class="logo">
+				<a onclick={openHome}><img src={navlogo} width="104px" height="44px" /></a>
+				</div>
+				<div class="loginMobile">
+				<div class="grid-containerMenuMobile">
+					<div></div>
+					<div class="menuutop">
+					<a onclick={closeMobMenu}><img src={CrossIcon} width="17px" /></a>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+			<div class="menuList padding">
+			<template if:true={showMenu}>
+				<ul>
+				<li><a class="textStyle" onclick={openHome}>{home}</a></li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openInformationCenterTwo}>{informationCenter}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openInformationCenterTwo}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle" onclick={openSymptomTracker}>{symptomTracker}</a>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openChallengesTwo}>{challengesLabel}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openChallengesTwo}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openQuestionsTwo}>{myQuestionnaire}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openQuestionsTwo}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openCommunities}>{community}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openCommunities}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openSupportTwo}>{support}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openSupportTwo}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<hr />
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openUserDetailmenu}>{userName}</a>
+					</div>
+					<div>
+						<a onclick={openUserDetailmenu}><span
+							style="float: right; text-decoration: none">&#10095;</span></a>
+					</div>
+					</div>
+				</li>
+				<hr />
+				<li><a class="textStyle" onclick={logoutFunc}>{logOut}</a></li>
+				</ul>
+			</template>
+			<template if:true={showuserSubmenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={backtoMainMenu}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={backtoMainMenu}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{userName}</b></a>
+				</li>
+				<hr />
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={userMenuNavigation}>{accountManagerr}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={userMenuNavigation}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openNotificationCenterMenu}>{notificationCenter}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openNotificationCenterMenu}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<li>
+					<div class="grid-containerMobileMenuList">
+					<div>
+						<a class="textStyle" onclick={openUpdatePrescriptionMenu}>{updatePrescription}</a>
+					</div>
+					<div>
+						<span style="float: right" onclick={openUpdatePrescriptionMenu}>&#10095;</span>
+					</div>
+					</div>
+				</li>
+				<hr />
+				<li>
+					<template if:true={showCareGiverMenus}>
+					<div class="grid-containerMenuProfileMobile">
+						<div>
+						<p class="textStyleExtra">{switchPatients}</p>
+						</div>
+						<template for:each={activeData} for:item="active" for:index="index">
+						<div key={active.Id}>
+							<c-bi-Pspb-Patient-Selection-Switch caregiverid={active.CaregiveID} patientname={active.Name}
+							patientid={active.Id}>
+							</c-bi-Pspb-Patient-Selection-Switch>
+						</div>
+						</template>
+					</div>
+					</template>
+				</li>
+				</ul>
+			</template>
+			<template if:true={showPrescriptionmenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={backtoHomeMenu}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={backtoHomeMenu}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{updatePrescription}</b></a>
+				</li>
+				<hr />
+				<li>
+					<a class="textStyle" onclick={updatePrescriptionLink}>{updatePrescription}</a>
+				</li>
+				<li>
+					<a class="textStyle" onclick={prescriptionStatusLink}>{presStatus}</a>
+				</li>
+				</ul>
+			</template>
+			<template if:true={showNotificationCentermenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={backtoHomeMenu}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={backtoHomeMenu}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{notificationCenter}</b></a>
+				</li>
+				<hr />
+				<li><a class="textStyle" onclick={openGeneralNC}>{general}</a></li>
+				<li>
+					<a class="textStyle" onclick={openActionRequiredNC}>{actionRequired}</a>
+				</li>
+				<li><a class="textStyle" onclick={openHistoryNC}>{historyLabel}</a></li>
+				</ul>
+			</template>
+			<template if:true={caregiverMenuList}>
+				<div class="menuList">
+				<ul>
+					<li>
+					<a class="textStyle" onclick={backtoMenu}>&#10094;&nbsp;{back}</a>
+					</li>
+					<li>
+					<div class="grid-containerMobileMenuList">
+						<div>
+						<a class="textStyleExtra" onclick={openMenuList}>{accountManager}</a>
+						</div>
+					</div>
+					</li>
+					<hr />
+					<li>
+					<a class="textStyle" onclick={openCarMyProfile}>{myProfileLabel}
+					</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openCarMyCaregiver}>{patientInfoLabel}</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openCarSelectAvatar}>{selectAvatarLabel}</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openCarNotSettings}>{notificSetting}</a>
+					</li>
+					
+				</ul>
+				</div>
+			</template>
+			<template if:true={showSupportmenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={handlebackSupport}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={handlebackSupport}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{support}</b></a>
+				</li>
+				<hr />
+				<li>
+					<a class="textStyle" onclick={openSupportCenter}>{supportCenterLabel}</a>
+				</li>
+				<li><a class="textStyle" onclick={openMyCases}>{myCaseLabel}</a></li>
+				</ul>
+			</template>
+			<template if:true={showInformationCentermenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={handlebackInformationCenter}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={handlebackInformationCenter}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{informationCenter}</b></a>
+				</li>
+				<hr />
+				<li><a class="textStyle" onclick={openArticles}>{article}</a></li>
+				<li if:true={showtreatvideo}>
+					<a class="textStyle" onclick={openPTV}>{patientTrtVideo}</a>
+				</li>
+				</ul>
+			</template>
+			<template if:true={showChallengesmenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={handlebackChallenges}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={handlebackChallenges}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{challengesLabel}</b></a>
+				</li>
+				<hr />
+				<li>
+					<a class="textStyle" onclick={openChallenges}>{challengesLabel}</a>
+				</li>
+				<li>
+					<a class="textStyle" onclick={openTrophycase}>{trophyCase}</a>
+				</li>
+				</ul>
+			</template>
+			<template if:true={showCommunitymenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={handlebackCommunity}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={handlebackCommunity}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{community}</b></a>
+				</li>
+				<hr />
+				<li><a class="textStyle" onclick={openAllPosts}>{allPosts}</a></li>
+				<li><a class="textStyle" onclick={openMyPosts}>{myPosts}</a></li>
+				<li>
+					<a class="textStyle" onclick={openMyFollowers}>{myFollowers}</a>
+				</li>
+				<li>
+					<a class="textStyle" onclick={openFollowing}>{followingLabel}</a>
+				</li>
+				</ul>
+			</template>
+			<!--new-->
+			<template if:true={showquestionnairemenu}>
+				<ul>
+				<li>
+					<div class="grid-containerMobileMenuListBack">
+					<div>
+						<span style="float: left" onclick={handleBack}>&#10094;</span>
+					</div>
+					<div>
+						<a class="textStyleback" onclick={handleBack}>{back}</a>
+					</div>
+					</div>
+				</li>
+				<li>
+					<a class="textStyle"><b>{myQuestionnaire}</b></a>
+				</li>
+				<hr />
+				<li>
+					<a class="textStyle" onclick={openOutstandingQuestionnaire}>{outstandingPage}
+					</a>
+				</li>
+				<template if:true={showTabMenu}>
+					<li><a class="textStyle" onclick={openSummary}>{summary}</a></li>
+					<li>
+					<a class="textStyle" onclick={openComQuestionnaires}>{completedQues}
+					</a>
+					</li>
+				</template>
+				<template if:false={showTabMenu}>
+					<li><a class="textStyle disabled">{summary}</a></li>
+					<li>
+					<a class="textStyle disabled">{completedQues} </a>
+					</li>
+				</template>
+				<li>
+					<a class="textStyle" onclick={openLetsPersonalize}>{letsPersonalize}</a>
+				</li>
+				</ul>
+			</template>
+			<template if:true={patientMenuList}>
+				<div class="menuList">
+				<ul>
+					<li>
+					<a class="textStyle" onclick={backtoMenu}>&#10094;&nbsp;{patientBack}</a>
+					</li>
+					<li>
+					<div class="grid-containerMobileMenuList">
+						<div>
+						<a class="textStyleExtra" onclick={openMenuList}>{accountManager}</a>
+						</div>
+					</div>
+					</li>
+					<hr />
+					<li>
+					<a class="textStyle" onclick={openPatMyProfile}>{myProfileLabel}
+					</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openPatMyCaregiver}>{myCaregiverLabel}</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openPatSelectAvatar}>{selectAvatarLabel}</a>
+					</li>
+					<li>
+					<a class="textStyle" onclick={openPatNotSettings}>{notificSetting}</a>
+					</li>
+					
+				</ul>
+				</div>
+			</template>
+			<template if:true={showToLogin}>
+				<ul>
+				<li><a class="textStyle" onclick={checkUser}>{loginLabel}</a></li>
+				</ul>
+			</template>
+			</div>
+		</div>
+		</div>
+	</template>
+
+	<template if:true={showPopup}>
+		<div class="modal-backdrop"></div>
+		<div class="modal-visible">
+		<div class="modal-close" onclick={handleClose}>
+			<a onclick={doNotLogout} class="nodecoration"><span class='crossicon'>&times;</span></a>
+		</div>
+		<div class="modal-content">
+			<p class="modalHead">{logoutWarning}</p>
+			<p class="modalPara">{logoutContent}</p>
+			<div class="width100">
+			<div class="grid-containermodals">
+				<button class="buttonLogoutCancel" onclick={doNotLogout}>
+				Cancel
+				</button>
+				<button class="ButtonLogoutYes" onclick={logoutFromSite}>
+				Yes
+				</button>
+			</div>
+			</div>
+		</div>
+		</div>
+	</template>
+	</div>	
+</template>

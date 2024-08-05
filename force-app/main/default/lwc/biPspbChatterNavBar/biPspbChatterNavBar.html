@@ -1,0 +1,36 @@
+<!-- This lightning web component is used to display Navigation Bar in the Patient Community  Pages-->
+<!-- Strings are hard coded in this HTML file to comply with the mobile responsiveness-->
+<template>
+  <!-- Navigation Bar container -->
+  <div data-it-uid={userId} class="topNav">
+    <!-- Navigation Menu for AllPost,MyPost,MyFollowers and following pages -->
+    <span
+      class={navColor} 
+      data-it-button="Patient Community Navbar: AllPosts "
+      onclick={navAllPost} tabindex="0" onkeypress={navAllPost}
+      
+    >
+    {allPostLabel}
+    </span>
+    <span
+      class={navColor1} 
+      data-it-button="Patient Community Navbar: MyPosts"
+      onclick={navMyPost} tabindex="0" onkeypress={navMyPost}
+    >
+    {myPostLabel}
+    </span>
+    <span
+      class={navColor2} 
+      data-it-button="Patient Community Navbar:My Followers "
+      onclick={navMyFollowers} tabindex="0" onkeypress={navMyFollowers}
+    >
+    {myFollowersLabel}
+    </span>
+    <span
+      class={navColor3} 
+      data-it-button="Patient Community Navbar:Following "
+      onclick={navFollowing} tabindex="0" onkeypress={navFollowing}
+    >{myFollowingLabel}
+    </span>
+  </div>
+</template>

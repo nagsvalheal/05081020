@@ -1,0 +1,27 @@
+<!--Whenever a Caregiver logs in, this component displays the list of patients to select and navigate-->
+<template>
+	<div class="grid-container">
+		<div><a onclick={openShowPopup} class={getstyleforPatient}>{patientname}</a></div>
+		<div><template if:true={showSwitchIcon}><img src={switchIcon}></template></div>
+	</div>
+	<!--Confirmation Popup-->
+	<template if:true={showPopup}>
+		<div class="modal-backdrop"></div>
+		<div class="modal-visible">
+			<div class="modal-close" onclick={handleClose}>
+				<a onclick={handleClose}><span class="times">&times;</span></a>
+			</div>
+			<div class="modal-content">
+				<p class="modalHead">Switch Patient</p>
+				<p class="modalPara">You will be representing the patient and performing actions on behalf of the
+					selected patient.</p>
+				<div class="width100">
+					<div class="grid-containermodals">
+						<button class="ButtonLogoutYes" onclick={updateSwitchPatient}>Okay</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<!--Confirmation Popup Ends-->
+</template>

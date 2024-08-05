@@ -1,0 +1,100 @@
+<!--This Lightning web component purpose is Avatar Prompt message for all the navigation pages.-->
+<template>
+	<!-- Avatar image -->
+
+	<div class="avatar-picklist-container">
+		<div class={avatarImgClass}>
+			<img src={selectedAvatarSrc} class="slds-m-right_large">
+		</div>
+			<!-- prompt message -->
+			<div if:true={main} class="Dot">
+				<div if:true={content} class="navigationcontent">
+					<div class='flex1'>
+						<div>
+							
+							<p class="contentbox">{selectedNameOne}</p>
+							<br if:true={contentTwo}>
+							<p class="contentbox" >{selectedNameSecond}</p>
+							<br if:true={contentThree}>
+							<p class="contentbox" >{selectedNameThird}</p>
+							<div class="contentboxmobile">
+								<p>{mobileName}</p>
+							</div>
+						</div>
+						<div class={closeValue} onclick={handleClose}>
+							<a><span class="crossicon">&times;</span></a>
+						</div>
+					</div>
+				</div>
+				<div if:true={twoContentMobile} class="navigationcontent2mobile">
+					<p class="contentboxmobile">{selectedNameTwo}</p>
+
+				</div>
+				<div if:true={challangeContentMobile} class="navigationcontent3mobile">
+
+					<p class="contentboxmobile">{selectedNameThree}</p>
+
+				</div>
+				<div if:true={contentDot} class="navigationcontentdot">
+					<p onclick={mobileclick} class="contentboxdot">...</p>
+				</div>
+			</div>
+
+			<div if:true={twoContent} class="navigationcontent2">
+				<p class="contentbox">{selectedNameTwo}</p>
+				<p class="contentbox">{selectedNameQues}</p>
+
+			</div>
+			<div if:true={patientavatar} class=" navcontent">
+				<p class="contentbox">{selectedNameAvatar}</p>
+			</div>
+
+
+			<div if:true={seperateChallenge} class="navigationcontentchallenge">
+				<p class="contentboxchallenge">{challengeNameOne}</p><br>
+				<p class="contentboxchallenge">{challengeNameTwo}</p>
+			</div>
+			<div if:true={challangeContent} class="navigationcontent3">
+
+				<p class="contentboxchal">{selectedNameThree}</p>
+
+			</div>
+			<div class='summaryflex'>
+				<div if:true={summary} class={navigationContent}>
+					<div class='flex1'>
+						<div>
+							<div>
+								<p class="contentbox5">{selectedNameSix}</p>
+								<br>
+							</div>
+							<div class="contentboxmobile">
+								<p>{mobileName}</p>
+							</div>
+							<p class="contentbox1">{selectedNameFive}</p>
+							<br>
+							<p class="contentbox1">{SelectedNameFiveChild}</p>
+						</div>
+						<div class={closeValue} onclick={handleClose}>
+							<a><span class="crossicon">&times;</span></a>
+						</div>
+					</div>
+
+
+				</div>
+				<div if:true={twoContentMobileOne} class="navigationcontent2mobile">
+					<p class="contentboxmobile">{selectedNameFour}</p>
+
+				</div>
+				<div if:true={contentDotOne} class={navigationContentDot}>
+					<p onclick={mobileclick} class="contentboxdot2">...</p>
+				</div>
+			</div>
+
+			<div if:true={dermo} class="navigationcontent4">
+				<p class="contentbox2">{selectedNameFour}</p>
+
+			</div>
+		</div>
+		<hr class="line">
+
+</template>
